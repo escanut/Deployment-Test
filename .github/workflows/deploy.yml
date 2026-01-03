@@ -16,7 +16,7 @@ jobs:
             mkdir -p ~/.ssh
             echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
             chmod 600 ~/.ssh/deploy_key
-            ssh-keyscan - H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+            ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
       - name: Deploying to server
         run: |
@@ -24,4 +24,4 @@ jobs:
           cd /var/www/html
           sudo git pull origin master
           sudo systemctl reload nginx
-            ENDSSH
+          ENDSSH
