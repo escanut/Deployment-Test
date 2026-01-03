@@ -18,7 +18,7 @@ jobs:
             chmod 600 ~/.ssh/deploy_key
             ssh-keyscan - H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Deploy to server
+      - name: Deploying to server
         run: |
           ssh -i ~/.ssh/deploy_key ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}
           cd /var/www/html
