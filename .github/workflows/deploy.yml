@@ -20,8 +20,4 @@ jobs:
 
       - name: Deploying to server
         run: |
-          ssh -i ~/.ssh/deploy_key ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }}
-          cd /var/www/html
-          sudo git pull origin master
-          sudo systemctl reload nginx
-          ENDSSH
+          ssh -i ~/.ssh/deploy_key ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_IP }} 'cd /var/www/html && sudo git pull origin master && sudo systemctl reload nginx'
